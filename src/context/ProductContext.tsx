@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-import { useAllProducts } from "../hooks/products.js";
-import { productsCall } from "../api/products.js";
+import { useAllProducts } from "../hooks/products";
+import { productsCall } from "../api/products";
 
 const initialState = {
   name: "",

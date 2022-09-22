@@ -1,19 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useLocationContext } from "./context/LocationContext.js";
-import { SidebarData } from "./components/Navbar/SidebarData.js";
+import { useLocationContext } from "./context/LocationContext";
+import { SidebarData } from "./components/Navbar/SidebarData";
 
-import Header from "./components/Header.js";
-import ScrollBar from "./components/ScrollBar/ScrollBar.js";
-import SectionBox from "./components/SectionBox.js";
-import FoundProducts from "./components/Details/FoundProducts.js";
-import ProductDetails from "./components/Details/ProductDetails.js";
-import EditProduct from "./components/EditProduct.js";
-import Delete from "./components/Delete.js";
+import Header from "./components/Header";
+import ScrollBar from "./components/ScrollBar/ScrollBar";
+import SectionBox from "./components/SectionBox";
+import FoundProducts from "./components/Details/FoundProducts";
+import ProductDetails from "./components/Details/ProductDetails";
+import EditProduct from "./components/EditProduct";
+import Delete from "./components/Delete";
 
 import "./App.css";
 
+type useLocationContext = { allLocations: any }
+
 function App() {
-  const { allLocations } = useLocationContext();
+  const { allLocations } = useLocationContext() as useLocationContext;
   const [sectionKeys, sectionsObj] = allLocations;
 
   return (
@@ -27,12 +29,11 @@ function App() {
           {SidebarData?.map((route, index) => (
             <Route
               key={index}
-              excat
               path={route.path}
               element={route.component ?? route.component}
             />
           ))}
-          {sectionKeys?.map((section, index) => (
+          {sectionKeys?.map((section: any, index: any) => (
             <Route
               key={index}
               path={`/${section}`}
@@ -40,17 +41,14 @@ function App() {
             />
           ))}
           <Route
-            exact
             path="/search/products/results"
             element={<FoundProducts />}
           />
           <Route
-            exact
             path="/search/products/results/:product_id"
             element={<ProductDetails />}
           />
           <Route
-            exact
             path="/search/products/results/:product_id/edit"
             element={<EditProduct />}
           />

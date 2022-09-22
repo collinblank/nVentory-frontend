@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-import { locationsCall } from "../api/locations.js";
-import { useLocation } from "../hooks/locations.js";
+import { locationsCall } from "../api/locations";
+import { useLocation } from "../hooks/locations";
 
 const LocationContext = createContext();
 

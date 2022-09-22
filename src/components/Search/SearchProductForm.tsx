@@ -3,11 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { useGeneralContext } from "../../context/GeneralContext";
 import { useProductContext } from "../../context/ProductContext";
 
+type useGeneralContext = { displayLocationForm: any, displayProductForm: any, setDisplayProductForm: any }
+
+type useProductContext = {
+productBody: any,
+setProductBody: any,
+initialState: any,
+productsCall: any,
+setFoundProducts: any,
+}
+
 function SearchProductForm() {
   const navigate = useNavigate();
 
   const { displayLocationForm, displayProductForm, setDisplayProductForm } =
-    useGeneralContext();
+    useGeneralContext() as useGeneralContext;
 
   const {
     productBody,
@@ -15,14 +25,14 @@ function SearchProductForm() {
     initialState,
     productsCall,
     setFoundProducts,
-  } = useProductContext();
+  } = useProductContext() as useProductContext;
 
-  const showProductForm = (e) => {
+  const showProductForm = (e: any) => {
     e.preventDefault();
     setDisplayProductForm(!displayProductForm);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const { data } = await productsCall.getAllProducts({

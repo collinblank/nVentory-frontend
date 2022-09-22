@@ -4,8 +4,8 @@ import SubBox from "./SubBox";
 
 import "./SectionBox.css";
 
-function SectionBox(props) {
-    const url = new URL(window.location);
+function SectionBox(props: any) {
+    const url = new URL(window.location as any);
     const urlPath = url.pathname.slice(1);
   return (
     <div className="sectionBody">

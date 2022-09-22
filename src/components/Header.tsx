@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from "./Navbar/Navbar.js";
+import Navbar from "./Navbar/Navbar";
 import SaveButton from "./SaveButton";
 
 import Logo from "./Logo";

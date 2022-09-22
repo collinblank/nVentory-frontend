@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useGeneralContext } from "../context/GeneralContext";
 import { useProductContext } from "../context/ProductContext";
 
+type useGeneralContext = { exitDetails: any, setExitDetails: any } 
+type useProductContext = { productsCall: any, oneProduct: any, setOneProduct: any } 
+
 function EditProduct() {
   const navigate = useNavigate();
-  const { exitDetails, setExitDetails } = useGeneralContext();
-  const { productsCall, oneProduct, setOneProduct } = useProductContext();
+  const { exitDetails, setExitDetails } = useGeneralContext() as useGeneralContext;
+  const { productsCall, oneProduct, setOneProduct } = useProductContext() as useProductContext;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     await productsCall.updateProduct(oneProduct.product_id, oneProduct);

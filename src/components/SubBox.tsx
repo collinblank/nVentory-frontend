@@ -1,15 +1,16 @@
 import React from "react";
 import Collapsible from "react-collapsible";
 import { orderByShelf } from "../helpers/locations";
+import { map } from "rxjs/operators"; 
 
 import ItemBox from "./ItemBox";
 
 import "./SubBox.css";
 
-function SubBox(props) {
+function SubBox(props: any) {
   const [shelfKeys, shelfs] = orderByShelf(props.subSections);
 
-  const displaySubSections = shelfKeys.map((shelfKey, index) => (
+  const displaySubSections = shelfKeys.map((shelfKey: any, index: any) => (
     <li key={index}>
       <div className="line"></div>
       <Collapsible
@@ -19,7 +20,6 @@ function SubBox(props) {
             Shelf {shelfKey} ------------
           </button>
         }
-        lazyRender=""
         className=""
       >
         <div className="content">

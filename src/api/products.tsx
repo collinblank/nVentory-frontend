@@ -3,9 +3,9 @@ import axios from "axios";
 const PRODUCT_URL =
   "https://nventory-postgres-database.herokuapp.com/products/";
 
-const getAllProducts = (body) => axios.get(PRODUCT_URL, { params: body });
+const getAllProducts = (body: any) => axios.get(PRODUCT_URL, { params: body });
 
-const createProduct = async (body) => {
+const createProduct = async (body: any) => {
   try {
     const { data } = await axios.post(PRODUCT_URL, body);
 
@@ -15,7 +15,7 @@ const createProduct = async (body) => {
   }
 };
 
-const getOneProduct = async (id) => {
+const getOneProduct = async (id: any) => {
   try {
     const { data } = await axios.get(`${PRODUCT_URL}/${id}`);
 
@@ -25,7 +25,7 @@ const getOneProduct = async (id) => {
   }
 };
 
-const updateProduct = async (id, body) => {
+const updateProduct = async (id: any, body: any) => {
   try {
     await axios.put(`${PRODUCT_URL}/${id}`, body);
   } catch (err) {
@@ -33,7 +33,7 @@ const updateProduct = async (id, body) => {
   }
 };
 
-const deleteProduct = (id) => axios.delete(`${PRODUCT_URL}/${id}`);
+const deleteProduct = (id: any) => axios.delete(`${PRODUCT_URL}/${id}`);
 
 export const productsCall = {
   getAllProducts,

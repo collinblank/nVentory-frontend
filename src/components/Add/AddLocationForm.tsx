@@ -3,17 +3,20 @@ import { useGeneralContext } from "../../context/GeneralContext";
 import { useLocationContext } from "../../context/LocationContext";
 import { locationsCall } from "../../api/locations";
 
-function AddLocationForm() {
-  const { locationBody, setLocationBody } = useLocationContext();
-  const { displayLocationForm, setDisplayLocationForm, displayProductForm } =
-    useGeneralContext();
+type useLocationContext = { locationBody: any, setLocationBody: any }
+type useGeneralContext = { displayLocationForm: any, setDisplayLocationForm: any, displayProductForm: any }
 
-  const showLocationForm = (e) => {
+function AddLocationForm() {
+  const { locationBody, setLocationBody } = useLocationContext() as useLocationContext;
+  const { displayLocationForm, setDisplayLocationForm, displayProductForm } =
+    useGeneralContext() as useGeneralContext;
+
+  const showLocationForm = (e: any) => {
     e.preventDefault();
     setDisplayLocationForm(!displayLocationForm);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     locationsCall.createLocation(locationBody);
   };

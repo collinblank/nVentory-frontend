@@ -4,19 +4,21 @@ import { useProductContext } from "../context/ProductContext";
 
 import "./ItemBox.css";
 
-function ItemBox(props) {
+type useProductContext = { productsCall: any, oneProduct: any, setOneProduct: any }
+
+function ItemBox(props: any) {
   const navigate = useNavigate();
-  const { productsCall, oneProduct, setOneProduct } = useProductContext();
+  const { productsCall, oneProduct, setOneProduct } = useProductContext() as useProductContext;
   const shelf_divs = props.items;
 
   let [count, setCount] = useState(0);
 
-  const checkDelete = (product) => {
+  const checkDelete = (product: any) => {
     setOneProduct(product);
     navigate(`/action/${product.product_id}`);
   };
 
-  const displayItems = shelf_divs.map((division, index) => {
+  const displayItems = shelf_divs.map((division: any, index: any) => {
       // division.products !== null ?setCount(division.products.quantity): setCount(0);
     return division.products !== null ? (
       
@@ -59,7 +61,6 @@ function ItemBox(props) {
 
               <div className="quantInputForm scroll">
                 <textarea
-                  type="number"
                   className="quantTextBox"
                   value={division.products.quantity}
                   // value={division.products.quantity}

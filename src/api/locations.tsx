@@ -5,7 +5,7 @@ const LOCATION_URL =
 
 const getAllLocations = () => axios.get(LOCATION_URL);
 
-const createLocation = async (body) => {
+const createLocation = async (body: any) => {
   try {
     const newLocation = await axios.post(LOCATION_URL, body);
     console.log(newLocation);
@@ -14,9 +14,9 @@ const createLocation = async (body) => {
   }
 };
 
-const getOneLocation = (id) => axios.get(`${LOCATION_URL}/${id}`);
-const updateLocation = (id, body) => axios.put(`${LOCATION_URL}/${id}`, body);
-const deleteLocation = (id) => axios.delete(`${LOCATION_URL}/${id}`);
+const getOneLocation = (id: any) => axios.get(`${LOCATION_URL}/${id}`);
+const updateLocation = (id: any, body: any) => axios.put(`${LOCATION_URL}/${id}`, body);
+const deleteLocation = (id: any) => axios.delete(`${LOCATION_URL}/${id}`);
 
 export const locationsCall = {
   getAllLocations,

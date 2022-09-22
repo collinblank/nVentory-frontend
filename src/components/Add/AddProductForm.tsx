@@ -3,21 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { useGeneralContext } from "../../context/GeneralContext";
 import { useProductContext } from "../../context/ProductContext";
 
+type useGeneralContext = { displayLocationForm: any, displayProductForm: any, setDisplayProductForm: any }
+type useProductContext = { productBody: any, setProductBody: any, initialState: any, productsCall: any }
+
 function AddProductForm() {
   const navigate = useNavigate();
 
   const { displayLocationForm, displayProductForm, setDisplayProductForm } =
-    useGeneralContext();
+    useGeneralContext() as useGeneralContext;
 
   const { productBody, setProductBody, initialState, productsCall } =
-    useProductContext();
+    useProductContext() as useProductContext;
 
-  const showProductForm = (e) => {
+  const showProductForm = (e: any) => {
     e.preventDefault();
     setDisplayProductForm(!displayProductForm);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     const newProduct = await productsCall.createProduct(productBody);

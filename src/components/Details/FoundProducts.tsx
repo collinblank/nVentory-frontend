@@ -4,9 +4,11 @@ import { useProductContext } from "../../context/ProductContext";
 
 import '../Show.css'
 
+type useProductContext = { foundProducts: any }
+
 function FoundProducts() {
   const navigate = useNavigate();
-  const { foundProducts } = useProductContext();
+  const { foundProducts } = useProductContext() as useProductContext;
 
   return (
     <div className="showBgBox">
@@ -16,7 +18,7 @@ function FoundProducts() {
           <h3>Found Products</h3>
           <ul>
             {foundProducts.length ? (
-              foundProducts.map((product, index) => (
+              foundProducts.map((product: any, index: any) => (
                 <li key={index} className="itemLink">
                   <div className="checkmark">✓</div>
                   <Link to={`/search/products/results/${product.product_id}`}>

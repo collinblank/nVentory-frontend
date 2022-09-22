@@ -5,10 +5,13 @@ import { useProductContext } from "../../context/ProductContext";
 
 import "./Products.css";
 
+type useGeneralContext = { exitDetails: any, setExitDetails: any }
+type useProductContext = { productsCall: any, oneProduct: any, setOneProduct: any }
+
 function ProductDetails() {
   const navigate = useNavigate();
-  const { exitDetails, setExitDetails } = useGeneralContext();
-  const { productsCall, oneProduct, setOneProduct } = useProductContext();
+  const { exitDetails, setExitDetails } = useGeneralContext() as useGeneralContext;
+  const { productsCall, oneProduct, setOneProduct } = useProductContext() as useProductContext;
   const { product_id } = useParams();
 
   useEffect(() => {

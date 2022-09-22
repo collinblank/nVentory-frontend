@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { useProductContext } from "../context/ProductContext";
 import { useLocationContext } from "../context/LocationContext";
 
+type useProductContext = { productsCall: any, oneProduct: any }
+ type useLocationContext = { locationsCall: any }
+
+
 function Delete() {
   const navigate = useNavigate();
-  const { productsCall, oneProduct } = useProductContext();
-  const { locationsCall } = useLocationContext();
+  const { productsCall, oneProduct } = useProductContext() as useProductContext;
+  const { locationsCall } = useLocationContext() as useLocationContext;
 
-  const removeProduct = async (e, product) => {
+  const removeProduct = async (e: any, product: any) => {
     e.preventDefault();
 
     await productsCall.deleteProduct(product.product_id);

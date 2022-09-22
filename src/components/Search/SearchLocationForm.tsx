@@ -2,13 +2,17 @@ import React from "react";
 import { useGeneralContext } from "../../context/GeneralContext";
 import { useLocationContext } from "../../context/LocationContext";
 
+type useGeneralContext = { displayLocationForm: any, setDisplayLocationForm: any, displayProductForm: any }
+
+type useLocationContext = { locationBody: any, setLocationBody: any }
+
 function SearchLocationForm() {
   const { displayLocationForm, setDisplayLocationForm, displayProductForm } =
-    useGeneralContext();
+    useGeneralContext() as useGeneralContext;
 
-  const { locationBody, setLocationBody } = useLocationContext();
+  const { locationBody, setLocationBody } = useLocationContext() as useLocationContext;
 
-  const showLocationForm = (e) => {
+  const showLocationForm = (e: any) => {
     e.preventDefault();
     setDisplayLocationForm(!displayLocationForm);
   };
